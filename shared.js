@@ -17,3 +17,8 @@ function handleSubmit(e){
 
 const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)en.target.classList.add('in')})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Close mobile nav when a link is tapped
+document.querySelectorAll('nav ul a').forEach(a=>a.addEventListener('click',()=>{
+  const n=document.querySelector('nav');if(n)n.classList.remove('open');
+}));
