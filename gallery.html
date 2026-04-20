@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery | Taken Time to Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Italiana&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .filters{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:14px;
+    margin-bottom:60px;
+  }
+  .filter-btn{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;
+    text-transform:uppercase;background:transparent;border:1px solid var(--gold);
+    color:var(--umber);padding:10px 22px;cursor:pointer;transition:all .3s;
+  }
+  .filter-btn:hover{background:var(--gold);color:var(--ivory)}
+  .filter-btn.active{background:var(--umber);color:var(--ivory);border-color:var(--umber)}
+  .piece{opacity:1;transition:opacity .4s,transform .5s}
+  .piece.hidden{display:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">TAKEN <span>·</span> TIME <span>·</span> TO <span>·</span> DESIGN</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="commissions.html">Commissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero hero-sm">
+  <div class="hero-ornament">SELECTED WORKS</div>
+  <h1>The <em>Gallery</em></h1>
+  <p class="tag">A collection of pieces in graphite, charcoal, pastel, ink, and paint.</p>
+</header>
+
+<main>
+
+<section class="reveal">
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All Works</button>
+    <button class="filter-btn" data-filter="portrait">Portraits</button>
+    <button class="filter-btn" data-filter="pet">Pet Portraits</button>
+    <button class="filter-btn" data-filter="figure">Figure Studies</button>
+    <button class="filter-btn" data-filter="painting">Paintings</button>
+    <button class="filter-btn" data-filter="caricature">Caricatures</button>
+  </div>
+
+  <div class="gallery" id="galleryGrid">
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_schnauzers.jpeg','The Brothers')">
+      <div class="frame"><img src="images/piece_schnauzers.jpeg" alt="Two Schnauzers" /></div>
+      <figcaption class="plaque"><div class="title">The Brothers</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_flower_crown.jpeg','A Crown of Lotus')">
+      <div class="frame"><img src="images/piece_flower_crown.jpeg" alt="Dog with Flower Crown" /></div>
+      <figcaption class="plaque"><div class="title">A Crown of Lotus</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_samoyed.jpeg','The White Fox')">
+      <div class="frame"><img src="images/piece_samoyed.jpeg" alt="Samoyed" /></div>
+      <figcaption class="plaque"><div class="title">The White Fox</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_pomeranian_pup.jpeg','Puff')">
+      <div class="frame"><img src="images/piece_pomeranian_pup.jpeg" alt="Pomeranian Puppy" /></div>
+      <figcaption class="plaque"><div class="title">Puff</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="portrait" onclick="openLightbox('images/piece_charcoal_woman.jpeg','Study in Blue')">
+      <div class="frame"><img src="images/piece_charcoal_woman.jpeg" alt="Charcoal Portrait of a Woman" /></div>
+      <figcaption class="plaque"><div class="title">Study in Blue</div><div class="meta">Charcoal on Toned Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="portrait" onclick="openLightbox('images/piece_ella.jpeg','Ella')">
+      <div class="frame"><img src="images/piece_ella.jpeg" alt="Ella" /></div>
+      <figcaption class="plaque"><div class="title">Ella</div><div class="meta">Charcoal on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="portrait" onclick="openLightbox('images/piece_live_portrait1.jpeg','A Gift, Received')">
+      <div class="frame"><img src="images/piece_live_portrait1.jpeg" alt="Live Portrait Sitting" /></div>
+      <figcaption class="plaque"><div class="title">A Gift, Received</div><div class="meta">Live Portrait, Charcoal</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="portrait" onclick="openLightbox('images/piece_live_portrait2.jpeg','An Evening on Seventh Avenue')">
+      <div class="frame"><img src="images/piece_live_portrait2.jpeg" alt="Live Portrait" /></div>
+      <figcaption class="plaque"><div class="title">An Evening on Seventh Avenue</div><div class="meta">Live Portrait, Charcoal</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="portrait" onclick="openLightbox('images/piece_wedding.jpeg','The Vow')">
+      <div class="frame"><img src="images/piece_wedding.jpeg" alt="Wedding Portrait" /></div>
+      <figcaption class="plaque"><div class="title">The Vow</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="portrait" onclick="openLightbox('images/piece_child.jpeg','Hush')">
+      <div class="frame"><img src="images/piece_child.jpeg" alt="Child Portrait" /></div>
+      <figcaption class="plaque"><div class="title">Hush</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_two_dogs.jpeg','Companions')">
+      <div class="frame"><img src="images/piece_two_dogs.jpeg" alt="Two Dogs" /></div>
+      <figcaption class="plaque"><div class="title">Companions</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_cat_greyhound.jpeg','The Unlikely Pair')">
+      <div class="frame"><img src="images/piece_cat_greyhound.jpeg" alt="Cat and Greyhound" /></div>
+      <figcaption class="plaque"><div class="title">The Unlikely Pair</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet painting" onclick="openLightbox('images/piece_pastel_dog.jpeg','Repose')">
+      <div class="frame"><img src="images/piece_pastel_dog.jpeg" alt="Dog in Pastel" /></div>
+      <figcaption class="plaque"><div class="title">Repose</div><div class="meta">Soft Pastel on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_westie.jpeg','Sunday Best')">
+      <div class="frame"><img src="images/piece_westie.jpeg" alt="Westie" /></div>
+      <figcaption class="plaque"><div class="title">Sunday Best</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet" onclick="openLightbox('images/piece_husky.jpeg','Attention')">
+      <div class="frame"><img src="images/piece_husky.jpeg" alt="Husky" /></div>
+      <figcaption class="plaque"><div class="title">Attention</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="figure" onclick="openLightbox('images/piece_figure_study.jpeg','Figure Study I')">
+      <div class="frame"><img src="images/piece_figure_study.jpeg" alt="Figure Study" /></div>
+      <figcaption class="plaque"><div class="title">Figure Study I</div><div class="meta">Charcoal on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="caricature" onclick="openLightbox('images/piece_caricature_car.jpeg','The Open Road')">
+      <div class="frame"><img src="images/piece_caricature_car.jpeg" alt="Caricature with Car" /></div>
+      <figcaption class="plaque"><div class="title">The Open Road</div><div class="meta">Digital Caricature</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="caricature" onclick="openLightbox('images/piece_family_caricature.jpeg','A Family Portrait')">
+      <div class="frame"><img src="images/piece_family_caricature.jpeg" alt="Family Caricature" /></div>
+      <figcaption class="plaque"><div class="title">A Family Portrait</div><div class="meta">Digital Caricature</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet painting" onclick="openLightbox('images/art1.jpeg','The Black Cat')">
+      <div class="frame"><img src="images/art1.jpeg" alt="The Black Cat" /></div>
+      <figcaption class="plaque"><div class="title">The Black Cat</div><div class="meta">Acrylic on Canvas</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="figure" onclick="openLightbox('images/art2.jpeg','Study of a Hooded Figure')">
+      <div class="frame"><img src="images/art2.jpeg" alt="Study of a Hooded Figure" /></div>
+      <figcaption class="plaque"><div class="title">Study of a Hooded Figure</div><div class="meta">Graphite on Paper</div></figcaption>
+    </figure>
+
+    <figure class="piece" data-cat="pet painting" onclick="openLightbox('images/art3.jpeg','Little Companion')">
+      <div class="frame"><img src="images/art3.jpeg" alt="Little Companion" /></div>
+      <figcaption class="plaque"><div class="title">Little Companion</div><div class="meta">Oil on Canvas</div></figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<div class="quote reveal">
+  <p>More works in progress. The studio is always growing.</p>
+  <div class="attr">Follow on Instagram for new pieces</div>
+</div>
+
+<section class="reveal" style="text-align:center">
+  <p style="font-style:italic;font-size:20px;opacity:.85;max-width:560px;margin:0 auto 40px">Have a piece in mind that isn't here? Every commission is one of one.</p>
+  <a href="commissions.html" class="cta">Commission a Piece</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="brand">TAKEN <span style="color:#a8854a">·</span> TIME <span style="color:#a8854a">·</span> TO <span style="color:#a8854a">·</span> DESIGN</div>
+  <div class="social">
+    <a href="mailto:hipstercookie024@gmail.com">Email</a>
+    <a href="https://instagram.com/takentimetodesign" target="_blank">Instagram</a>
+    <a href="commissions.html">Commission</a>
+  </div>
+  <p>© MMXXVI Brooke Taken · All works original</p>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="" />
+  <div class="lightbox-caption" id="lightbox-cap"></div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  const btns = document.querySelectorAll('.filter-btn');
+  const pieces = document.querySelectorAll('#galleryGrid .piece');
+  btns.forEach(btn => btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    pieces.forEach(p => {
+      const cats = (p.dataset.cat || '').split(/\s+/);
+      if(f === 'all' || cats.includes(f)) p.classList.remove('hidden');
+      else p.classList.add('hidden');
+    });
+  }));
+</script>
+</body>
+</html>

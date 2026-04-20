@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Commissions | Taken Time to Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Italiana&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">TAKEN <span>·</span> TIME <span>·</span> TO <span>·</span> DESIGN</a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="commissions.html" class="active">Commissions</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero hero-sm">
+  <div class="hero-ornament">BY REQUEST</div>
+  <h1>Commission a <em>Piece</em></h1>
+  <p class="tag">A one of one work, made slowly and only for you.</p>
+</header>
+
+<main>
+
+<section class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Offerings</div>
+    <h2>Pricing <em>Tiers</em></h2>
+    <span class="divider"></span>
+    <p style="margin-top:20px;font-style:italic;opacity:.85;max-width:600px;margin-left:auto;margin-right:auto">Each tier is a starting point. Final pricing depends on subject, complexity, and medium. Reach out and we will find the right fit.</p>
+  </div>
+  <div class="pricing">
+    <div class="tier">
+      <h4>Petite</h4>
+      <div class="size">Up to 8 × 10"</div>
+      <div class="price">From $120<small>graphite or ink</small></div>
+      <ul>
+        <li>Single subject</li>
+        <li>One reference photo</li>
+        <li>Two weeks of devotion</li>
+        <li>Digital scan included</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <h4>Studio</h4>
+      <div class="size">8 × 10" to 11 × 14"</div>
+      <div class="price">From $250<small>graphite, ink, or paint</small></div>
+      <ul>
+        <li>One or two subjects</li>
+        <li>Multiple references</li>
+        <li>Three to four weeks</li>
+        <li>Digital scan included</li>
+        <li>Personal correspondence</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <h4>Salon</h4>
+      <div class="size">16 × 20" or larger</div>
+      <div class="price">From $450<small>paint on canvas</small></div>
+      <ul>
+        <li>Detailed composition</li>
+        <li>Background of your choice</li>
+        <li>Six weeks or more</li>
+        <li>Digital scan included</li>
+        <li>Hand signed and dated</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">From Inquiry to Doorstep</div>
+    <h2>The <em>Process</em></h2>
+    <span class="divider"></span>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">I</div>
+      <h4>Inquiry</h4>
+      <p>Tell me about your vision through the form below. I read every message personally.</p>
+    </div>
+    <div class="step">
+      <div class="num">II</div>
+      <h4>Conversation</h4>
+      <p>We talk through subject, size, medium, references, and timeline. A 50% deposit secures your spot.</p>
+    </div>
+    <div class="step">
+      <div class="num">III</div>
+      <h4>Creation</h4>
+      <p>I begin in the studio. You receive progress photos at key milestones for your input.</p>
+    </div>
+    <div class="step">
+      <div class="num">IV</div>
+      <h4>Delivery</h4>
+      <p>Final balance due upon approval. The piece is carefully packaged and sent to your door.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="section-head">
+    <div class="eyebrow">Frequently Asked</div>
+    <h2>Good <em>Questions</em></h2>
+    <span class="divider"></span>
+  </div>
+  <div class="faq">
+    <details>
+      <summary>How long does a commission take?</summary>
+      <p>Anywhere from two weeks for a small graphite piece to two months for a large painting. I will give you a firm estimate during our first conversation.</p>
+    </details>
+    <details>
+      <summary>What kind of reference photos work best?</summary>
+      <p>Clear, well lit photographs in natural light are ideal. The more I have to work from, the more alive the final piece will feel. Don't worry if you only have one, we can make it work.</p>
+    </details>
+    <details>
+      <summary>Can I commission a piece as a gift?</summary>
+      <p>Yes, and it is one of my favorite kinds of work. Let me know the occasion and the timeline so we can plan ahead.</p>
+    </details>
+    <details>
+      <summary>Do you ship internationally?</summary>
+      <p>I do. Shipping is calculated separately based on size and destination, and every piece is packaged with great care.</p>
+    </details>
+    <details>
+      <summary>What if I'm not sure what I want?</summary>
+      <p>That is perfectly fine. Reach out anyway. Some of the best pieces have begun as just a feeling or a memory.</p>
+    </details>
+  </div>
+</section>
+
+<section class="reveal" style="max-width:none;padding:0">
+  <div class="commission">
+    <div class="commission-inner">
+      <div class="section-head">
+        <div class="eyebrow">Begin Here</div>
+        <h2>Inquiry <em>Form</em></h2>
+        <span class="divider"></span>
+      </div>
+      <p class="commission-intro">Tell me about the piece you have in mind: a portrait of a beloved face, a cherished pet, or something altogether your own. I will write back personally to discuss the details.</p>
+
+      <form onsubmit="handleSubmit(event)">
+        <div class="row">
+          <div>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="type">Type of Piece</label>
+            <select id="type" required>
+              <option value="">Select</option>
+              <option>Portrait of a Person</option>
+              <option>Pet Portrait</option>
+              <option>Illustration</option>
+              <option>Custom / Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="size">Approximate Size</label>
+            <select id="size" required>
+              <option value="">Select</option>
+              <option>Petite (under 8×10")</option>
+              <option>Studio (8×10" to 11×14")</option>
+              <option>Salon (16×20" or larger)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="details">Tell Me About Your Vision</label>
+          <textarea id="details" placeholder="Who or what is the piece for? Any reference photos you'd like to share? Timeline? Budget?" required></textarea>
+        </div>
+        <button type="submit" class="cta">Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="brand">TAKEN <span style="color:#a8854a">·</span> TIME <span style="color:#a8854a">·</span> TO <span style="color:#a8854a">·</span> DESIGN</div>
+  <div class="social">
+    <a href="mailto:hipstercookie024@gmail.com">Email</a>
+    <a href="https://instagram.com/takentimetodesign" target="_blank">Instagram</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© MMXXVI Brooke Taken · All works original</p>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>
