@@ -267,23 +267,34 @@ button[type=submit]{margin-top:20px;justify-self:center}
 /* QUOTE / TESTIMONIAL */
 .quote{
   text-align:center;max-width:780px;margin:80px auto;
-  padding:60px 30px;border-top:1px solid var(--gold);
-  border-bottom:1px solid var(--gold);position:relative;
+  padding:50px 40px 44px;position:relative;
+  border-top:1px solid rgba(168,133,74,0.5);
+  border-bottom:1px solid rgba(168,133,74,0.5);
 }
-.quote::before{
-  content:"\201C";position:absolute;top:-10px;left:50%;
-  transform:translateX(-50%);
-  background:var(--ivory);padding:0 18px;
-  font-family:'Italiana',serif;font-size:80px;color:var(--gold);
-  line-height:1;
+.quote::before,
+.quote::after{
+  content:"";position:absolute;left:50%;
+  width:6px;height:6px;
+  background:var(--gold);
+  transform:translateX(-50%) rotate(45deg);
 }
+.quote::before{top:-3px}
+.quote::after{bottom:-3px}
 .quote p{
-  font-family:'Italiana',serif;font-size:30px;font-style:italic;
-  color:var(--umber);line-height:1.4;
+  font-family:'Italiana',serif;font-size:28px;font-style:italic;
+  color:var(--umber);line-height:1.45;
+  quotes:"\201C" "\201D";
 }
+.quote p::before{content:open-quote;color:var(--gold);margin-right:4px;font-size:1em;opacity:.7}
+.quote p::after{content:close-quote;color:var(--gold);margin-left:4px;font-size:1em;opacity:.7}
 .quote .attr{
   font-family:'Cinzel',serif;font-size:11px;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--gold);margin-top:30px;
+  text-transform:uppercase;color:var(--gold);margin-top:28px;
+  display:flex;align-items:center;justify-content:center;gap:14px;
+}
+.quote .attr::before,
+.quote .attr::after{
+  content:"";width:20px;height:1px;background:var(--gold);opacity:.6;
 }
 
 /* CONTACT */
@@ -373,3 +384,13 @@ footer .social a:hover{color:var(--crimson)}
 
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1s}
 .reveal.in{opacity:1;transform:none}
+
+/* FORM THANK YOU */
+.form-success{
+  display:none;text-align:center;padding:40px 20px;
+  font-family:'Italiana',serif;
+}
+.form-success.show{display:block;animation:fadeIn .6s}
+.form-success h3{font-size:36px;color:var(--crimson);margin-bottom:14px}
+.form-success p{font-size:20px;font-style:italic;color:var(--umber);opacity:.85}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
