@@ -1,0 +1,23 @@
+[
+  { "id": 1, "title": "The Brothers", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_schnauzers.jpeg", "alt": "Two Schnauzers", "order": 1 },
+  { "id": 2, "title": "A Crown of Lotus", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_flower_crown.jpeg", "alt": "Dog with Flower Crown", "order": 2 },
+  { "id": 3, "title": "The White Fox", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_samoyed.jpeg", "alt": "Samoyed", "order": 3 },
+  { "id": 4, "title": "Puff", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_pomeranian_pup.jpeg", "alt": "Pomeranian Puppy", "order": 4 },
+  { "id": 5, "title": "Study in Blue", "medium": "Charcoal on Toned Paper", "categories": ["portrait"], "image": "images/piece_charcoal_woman.jpeg", "alt": "Charcoal Portrait of a Woman", "order": 5 },
+  { "id": 6, "title": "Ella", "medium": "Charcoal on Paper", "categories": ["portrait"], "image": "images/piece_ella.jpeg", "alt": "Ella", "order": 6 },
+  { "id": 7, "title": "A Gift, Received", "medium": "Live Portrait, Charcoal", "categories": ["portrait"], "image": "images/piece_live_portrait1.jpeg", "alt": "Live Portrait Sitting", "order": 7 },
+  { "id": 8, "title": "An Evening on Seventh Avenue", "medium": "Live Portrait, Charcoal", "categories": ["portrait"], "image": "images/piece_live_portrait2.jpeg", "alt": "Live Portrait", "order": 8 },
+  { "id": 9, "title": "The Vow", "medium": "Graphite on Paper", "categories": ["portrait"], "image": "images/piece_wedding.jpeg", "alt": "Wedding Portrait", "order": 9 },
+  { "id": 10, "title": "Hush", "medium": "Graphite on Paper", "categories": ["portrait"], "image": "images/piece_child.jpeg", "alt": "Child Portrait", "order": 10 },
+  { "id": 11, "title": "Companions", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_two_dogs.jpeg", "alt": "Two Dogs", "order": 11 },
+  { "id": 12, "title": "The Unlikely Pair", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_cat_greyhound.jpeg", "alt": "Cat and Greyhound", "order": 12 },
+  { "id": 13, "title": "Repose", "medium": "Soft Pastel on Paper", "categories": ["pet", "painting"], "image": "images/piece_pastel_dog.jpeg", "alt": "Dog in Pastel", "order": 13 },
+  { "id": 14, "title": "Sunday Best", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_westie.jpeg", "alt": "Westie", "order": 14 },
+  { "id": 15, "title": "Attention", "medium": "Graphite on Paper", "categories": ["pet"], "image": "images/piece_husky.jpeg", "alt": "Husky", "order": 15 },
+  { "id": 16, "title": "Figure Study I", "medium": "Charcoal on Paper", "categories": ["figure"], "image": "images/piece_figure_study.jpeg", "alt": "Figure Study", "order": 16 },
+  { "id": 17, "title": "The Open Road", "medium": "Digital Caricature", "categories": ["caricature"], "image": "images/piece_caricature_car.jpeg", "alt": "Caricature with Car", "order": 17 },
+  { "id": 18, "title": "A Family Portrait", "medium": "Digital Caricature", "categories": ["caricature"], "image": "images/piece_family_caricature.jpeg", "alt": "Family Caricature", "order": 18 },
+  { "id": 19, "title": "The Black Cat", "medium": "Acrylic on Canvas", "categories": ["pet", "painting"], "image": "images/art1.jpeg", "alt": "The Black Cat", "order": 19 },
+  { "id": 20, "title": "Study of a Hooded Figure", "medium": "Graphite on Paper", "categories": ["figure"], "image": "images/art2.jpeg", "alt": "Study of a Hooded Figure", "order": 20 },
+  { "id": 21, "title": "Little Companion", "medium": "Oil on Canvas", "categories": ["pet", "painting"], "image": "images/art3.jpeg", "alt": "Little Companion", "order": 21 }
+]

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Studio | Taken Time to Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Italiana&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body{ padding-bottom:80px }
+  .studio-header{
+    padding:150px 30px 50px; text-align:center;
+  }
+  .studio-header .hero-ornament{ font-family:'Cinzel',serif;color:var(--gold);font-size:14px;letter-spacing:.4em;margin-bottom:18px }
+  .studio-header .hero-ornament::before,.studio-header .hero-ornament::after{content:"❦";margin:0 18px;color:var(--gold-light)}
+  .studio-header h1{ font-family:'Italiana',serif;font-size:clamp(40px,7vw,72px);color:var(--umber);font-weight:400 }
+
+  .wrap{ max-width:1200px;margin:0 auto;padding:0 40px }
+
+  /* LOGIN */
+  .login-card{
+    max-width:420px;margin:40px auto 0;padding:48px 44px;
+    background:rgba(237,226,203,0.5);border:1px solid var(--gold);
+    text-align:center;position:relative;
+  }
+  .login-card::before{content:"";position:absolute;inset:6px;border:1px double var(--gold);pointer-events:none}
+  .login-card p.hint{font-style:italic;opacity:.8;margin-bottom:28px}
+  .login-card input{ text-align:center;font-size:20px;margin-bottom:10px }
+  .login-card .error{ color:var(--crimson);font-style:italic;font-size:15px;min-height:22px;margin-bottom:6px }
+  .login-card button{ width:100%;margin-top:14px }
+
+  /* TOOLBAR */
+  .toolbar{ display:flex;justify-content:space-between;align-items:center;margin-bottom:50px;flex-wrap:wrap;gap:16px }
+  .toolbar .count{ font-style:italic;opacity:.75 }
+  .btn-ghost{
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    background:transparent;border:1px solid var(--gold);color:var(--umber);
+    padding:10px 22px;cursor:pointer;transition:all .3s;
+  }
+  .btn-ghost:hover{ background:var(--gold);color:var(--ivory) }
+
+  /* PIECE GRID */
+  .piece-grid{ display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:36px;margin-bottom:60px }
+  .piece-card{
+    background:rgba(237,226,203,0.45);border:1px solid var(--gold);padding:16px;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .piece-card .thumb{ width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#ddd;border:1px solid var(--gold-light) }
+  .piece-card .title{ font-family:'Italiana',serif;font-size:21px;color:var(--umber);font-style:italic }
+  .piece-card .meta{ font-family:'Cinzel',serif;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold) }
+  .piece-card .cats{ display:flex;gap:6px;flex-wrap:wrap }
+  .piece-card .cat-tag{
+    font-family:'Cinzel',serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--umber);background:rgba(168,133,74,0.18);padding:4px 9px;
+  }
+  .piece-card .actions{ display:flex;gap:8px;margin-top:auto;flex-wrap:wrap }
+  .mini-btn{
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    background:transparent;border:1px solid var(--gold);color:var(--umber);
+    padding:7px 12px;cursor:pointer;transition:all .25s;flex:1;min-width:0;
+  }
+  .mini-btn:hover{ background:var(--umber);color:var(--ivory);border-color:var(--umber) }
+  .mini-btn.danger:hover{ background:var(--crimson);border-color:var(--crimson) }
+  .mini-btn.square{ flex:none;width:36px }
+
+  .empty-state{ text-align:center;padding:80px 20px;font-style:italic;opacity:.8 }
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(20,15,10,0.85);
+    display:none;justify-content:center;align-items:flex-start;
+    z-index:500;padding:60px 20px;overflow-y:auto;
+  }
+  .modal-overlay.active{ display:flex }
+  .modal{
+    background:var(--ivory);max-width:560px;width:100%;padding:48px 44px;
+    border:1px solid var(--gold);position:relative;
+  }
+  .modal::before{ content:"";position:absolute;inset:6px;border:1px double var(--gold);pointer-events:none }
+  .modal h2{ font-family:'Italiana',serif;font-size:32px;color:var(--umber);margin-bottom:28px;text-align:center }
+  .modal form{ gap:20px }
+  .modal .cat-options{ display:flex;flex-wrap:wrap;gap:10px }
+  .cat-pill{
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    border:1px solid var(--gold);padding:8px 16px;cursor:pointer;color:var(--umber);
+    transition:all .25s;user-select:none;
+  }
+  .cat-pill.selected{ background:var(--umber);color:var(--ivory);border-color:var(--umber) }
+  .image-drop{
+    border:1px dashed var(--gold);padding:20px;text-align:center;cursor:pointer;position:relative;
+  }
+  .image-drop img{ max-width:100%;max-height:220px;display:block;margin:0 auto 12px;object-fit:contain }
+  .image-drop .label{ font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold) }
+  .image-drop input[type=file]{ position:absolute;inset:0;opacity:0;cursor:pointer }
+  .modal-actions{ display:flex;gap:14px;margin-top:10px }
+  .modal-actions .mini-btn{ padding:14px 20px;font-size:11px }
+  .form-error{ color:var(--crimson);font-style:italic;font-size:15px;text-align:center;min-height:20px }
+
+  /* TOAST */
+  .toast{
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--umber);color:var(--ivory);padding:16px 30px;
+    font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;
+    opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;z-index:1000;
+  }
+  .toast.show{ opacity:1;transform:translateX(-50%) translateY(0) }
+
+  .spinner{ display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px }
+  @keyframes spin{ to{ transform:rotate(360deg) } }
+  [hidden]{ display:none !important }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="brand">TAKEN <span>·</span> TIME <span>·</span> TO <span>·</span> DESIGN</a>
+  <ul>
+    <li><a href="/gallery">View Gallery</a></li>
+    <li><a href="#" id="logoutLink" hidden>Log Out</a></li>
+  </ul>
+</nav>
+
+<header class="studio-header">
+  <div class="hero-ornament">PRIVATE</div>
+  <h1>The <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--crimson)">Studio</em></h1>
+</header>
+
+<main class="wrap">
+
+  <section id="loginView" class="login-card">
+    <p class="hint">Enter your studio password to manage the gallery.</p>
+    <form id="loginForm">
+      <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" required />
+      <div class="error" id="loginError"></div>
+      <button type="submit" class="cta">Enter Studio</button>
+    </form>
+  </section>
+
+  <section id="dashboardView" hidden>
+    <div class="toolbar">
+      <div class="count" id="pieceCount"></div>
+      <button class="btn-ghost" id="addPieceBtn">+ Add New Piece</button>
+    </div>
+    <div class="piece-grid" id="pieceGrid"></div>
+    <div class="empty-state" id="emptyState" hidden>No pieces yet. Add your first one above.</div>
+  </section>
+
+</main>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2 id="modalTitle">Add Piece</h2>
+    <form id="pieceForm">
+      <div class="image-drop" id="imageDrop">
+        <img id="imagePreview" hidden />
+        <div class="label" id="imageLabel">Click to choose an image</div>
+        <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" />
+      </div>
+      <div>
+        <label>Title</label>
+        <input type="text" id="pieceTitle" placeholder="e.g. The Brothers" required />
+      </div>
+      <div>
+        <label>Medium</label>
+        <input type="text" id="pieceMedium" placeholder="e.g. Graphite on Paper" required />
+      </div>
+      <div>
+        <label>Categories</label>
+        <div class="cat-options" id="catOptions">
+          <div class="cat-pill" data-cat="portrait">Portraits</div>
+          <div class="cat-pill" data-cat="pet">Pet Portraits</div>
+          <div class="cat-pill" data-cat="figure">Figure Studies</div>
+          <div class="cat-pill" data-cat="painting">Paintings</div>
+          <div class="cat-pill" data-cat="caricature">Caricatures</div>
+        </div>
+      </div>
+      <div class="form-error" id="formError"></div>
+      <div class="modal-actions">
+        <button type="button" class="mini-btn" id="cancelModalBtn">Cancel</button>
+        <button type="submit" class="mini-btn" id="saveBtn" style="background:var(--umber);color:var(--ivory)">Save Piece</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CATS = ['portrait','pet','figure','painting','caricature'];
+const CAT_LABELS = { portrait:'Portraits', pet:'Pet Portraits', figure:'Figure Studies', painting:'Paintings', caricature:'Caricatures' };
+
+let pieces = [];
+let editingId = null;
+let selectedCats = [];
+let pendingImageDataUrl = null;
+let pendingImageName = null;
+
+const loginView = document.getElementById('loginView');
+const dashboardView = document.getElementById('dashboardView');
+const logoutLink = document.getElementById('logoutLink');
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+async function checkSession(){
+  let authenticated = false;
+  try {
+    const res = await fetch('/api/session');
+    const data = await res.json();
+    authenticated = !!data.authenticated;
+  } catch(err) {
+    authenticated = false;
+  }
+  if(authenticated){
+    loginView.hidden = true;
+    dashboardView.hidden = false;
+    logoutLink.hidden = false;
+    await loadPieces();
+  } else {
+    loginView.hidden = false;
+    dashboardView.hidden = true;
+    logoutLink.hidden = true;
+  }
+}
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const password = document.getElementById('loginPassword').value;
+  const errEl = document.getElementById('loginError');
+  errEl.textContent = '';
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password }),
+  });
+  const data = await res.json();
+  if(!res.ok){ errEl.textContent = data.error || 'Something went wrong.'; return; }
+  document.getElementById('loginPassword').value = '';
+  await checkSession();
+});
+
+logoutLink.addEventListener('click', async (e) => {
+  e.preventDefault();
+  await fetch('/api/logout', { method: 'POST' });
+  await checkSession();
+});
+
+async function loadPieces(){
+  const res = await fetch('/api/pieces-list');
+  const data = await res.json();
+  if(!res.ok){ showToast(data.error || 'Could not load pieces.'); return; }
+  pieces = data.pieces || [];
+  renderGrid();
+}
+
+function renderGrid(){
+  const grid = document.getElementById('pieceGrid');
+  const empty = document.getElementById('emptyState');
+  document.getElementById('pieceCount').textContent = `${pieces.length} piece${pieces.length === 1 ? '' : 's'} in the gallery`;
+  if(pieces.length === 0){
+    grid.innerHTML = '';
+    empty.hidden = false;
+    return;
+  }
+  empty.hidden = true;
+  grid.innerHTML = pieces.map((p, i) => `
+    <div class="piece-card">
+      <img class="thumb" src="/${p.image}" alt="${escapeHtml(p.alt || p.title)}" />
+      <div class="title">${escapeHtml(p.title)}</div>
+      <div class="meta">${escapeHtml(p.medium)}</div>
+      <div class="cats">${p.categories.map(c => `<span class="cat-tag">${CAT_LABELS[c] || c}</span>`).join('')}</div>
+      <div class="actions">
+        <button class="mini-btn square" data-action="up" data-id="${p.id}" ${i === 0 ? 'disabled style="opacity:.3"' : ''}>↑</button>
+        <button class="mini-btn square" data-action="down" data-id="${p.id}" ${i === pieces.length - 1 ? 'disabled style="opacity:.3"' : ''}>↓</button>
+        <button class="mini-btn" data-action="edit" data-id="${p.id}">Edit</button>
+        <button class="mini-btn danger" data-action="delete" data-id="${p.id}">Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escapeHtml(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+document.getElementById('pieceGrid').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button[data-action]');
+  if(!btn) return;
+  const id = btn.dataset.id;
+  const action = btn.dataset.action;
+  const piece = pieces.find(p => String(p.id) === String(id));
+  if(!piece) return;
+
+  if(action === 'edit'){ openModal(piece); }
+  else if(action === 'delete'){ deletePiece(piece); }
+  else if(action === 'up' || action === 'down'){ movePiece(piece, action); }
+});
+
+async function movePiece(piece, direction){
+  const idx = pieces.findIndex(p => String(p.id) === String(piece.id));
+  const swapWith = direction === 'up' ? idx - 1 : idx + 1;
+  if(swapWith < 0 || swapWith >= pieces.length) return;
+  const newOrder = pieces.map(p => p.id);
+  [newOrder[idx], newOrder[swapWith]] = [newOrder[swapWith], newOrder[idx]];
+  const res = await fetch('/api/pieces-save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'reorder', order: newOrder }),
+  });
+  const data = await res.json();
+  if(!res.ok){ showToast(data.error || 'Could not reorder.'); return; }
+  pieces = data.pieces;
+  renderGrid();
+}
+
+async function deletePiece(piece){
+  if(!confirm(`Remove "${piece.title}" from the gallery? This cannot be undone.`)) return;
+  const res = await fetch('/api/pieces-save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'delete', item: { id: piece.id } }),
+  });
+  const data = await res.json();
+  if(!res.ok){ showToast(data.error || 'Could not delete.'); return; }
+  pieces = data.pieces;
+  renderGrid();
+  showToast('Piece removed.');
+}
+
+function openModal(piece){
+  editingId = piece ? piece.id : null;
+  document.getElementById('modalTitle').textContent = piece ? 'Edit Piece' : 'Add Piece';
+  document.getElementById('pieceTitle').value = piece ? piece.title : '';
+  document.getElementById('pieceMedium').value = piece ? piece.medium : '';
+  selectedCats = piece ? [...piece.categories] : [];
+  pendingImageDataUrl = null;
+  pendingImageName = null;
+  document.getElementById('formError').textContent = '';
+  document.getElementById('imageInput').value = '';
+
+  const preview = document.getElementById('imagePreview');
+  const label = document.getElementById('imageLabel');
+  if(piece){
+    preview.src = '/' + piece.image;
+    preview.hidden = false;
+    label.textContent = 'Click to replace image';
+  } else {
+    preview.hidden = true;
+    label.textContent = 'Click to choose an image';
+  }
+
+  renderCatPills();
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('active');
+}
+
+function renderCatPills(){
+  document.querySelectorAll('.cat-pill').forEach(el => {
+    el.classList.toggle('selected', selectedCats.includes(el.dataset.cat));
+  });
+}
+
+document.getElementById('catOptions').addEventListener('click', (e) => {
+  const pill = e.target.closest('.cat-pill');
+  if(!pill) return;
+  const cat = pill.dataset.cat;
+  if(selectedCats.includes(cat)) selectedCats = selectedCats.filter(c => c !== cat);
+  else selectedCats.push(cat);
+  renderCatPills();
+});
+
+document.getElementById('addPieceBtn').addEventListener('click', () => openModal(null));
+document.getElementById('cancelModalBtn').addEventListener('click', closeModal);
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if(e.target.id === 'modalOverlay') closeModal();
+});
+
+document.getElementById('imageInput').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    pendingImageDataUrl = reader.result;
+    pendingImageName = file.name.replace(/\.[^.]+$/, '');
+    const preview = document.getElementById('imagePreview');
+    preview.src = reader.result;
+    preview.hidden = false;
+    document.getElementById('imageLabel').textContent = 'Click to choose a different image';
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('pieceForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errEl = document.getElementById('formError');
+  errEl.textContent = '';
+
+  const title = document.getElementById('pieceTitle').value.trim();
+  const medium = document.getElementById('pieceMedium').value.trim();
+
+  if(selectedCats.length === 0){ errEl.textContent = 'Pick at least one category.'; return; }
+
+  const existing = editingId ? pieces.find(p => String(p.id) === String(editingId)) : null;
+  if(!existing && !pendingImageDataUrl){ errEl.textContent = 'Please choose an image.'; return; }
+
+  const saveBtn = document.getElementById('saveBtn');
+  saveBtn.disabled = true;
+  saveBtn.innerHTML = '<span class="spinner"></span> Saving…';
+
+  try {
+    let imagePath = existing ? existing.image : null;
+    if(pendingImageDataUrl){
+      const uploadRes = await fetch('/api/upload-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: pendingImageName || title, dataUrl: pendingImageDataUrl }),
+      });
+      const uploadData = await uploadRes.json();
+      if(!uploadRes.ok){ throw new Error(uploadData.error || 'Image upload failed.'); }
+      imagePath = uploadData.path;
+    }
+
+    const item = { title, medium, categories: selectedCats, image: imagePath, alt: title };
+    if(editingId) item.id = editingId;
+
+    const saveRes = await fetch('/api/pieces-save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'upsert', item }),
+    });
+    const saveData = await saveRes.json();
+    if(!saveRes.ok){ throw new Error(saveData.error || 'Could not save piece.'); }
+
+    pieces = saveData.pieces;
+    renderGrid();
+    closeModal();
+    showToast(editingId ? 'Piece updated.' : 'Piece added to the gallery.');
+  } catch(err){
+    errEl.textContent = err.message;
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = 'Save Piece';
+  }
+});
+
+checkSession();
+</script>
+
+</body>
+</html>
