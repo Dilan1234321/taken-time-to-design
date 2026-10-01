@@ -115,12 +115,9 @@
     }));
   }
 
-  fetch('/data/pieces.json')
+  fetch('/api/pieces-public')
     .then(r => r.json())
-    .then(pieces => {
-      pieces.sort((a, b) => (a.order || 0) - (b.order || 0));
-      renderGallery(pieces);
-    })
+    .then(data => renderGallery(data.pieces || []))
     .catch(() => {
       document.getElementById('galleryGrid').innerHTML = '<p style="text-align:center;font-style:italic;opacity:.8">The gallery could not be loaded. Please refresh.</p>';
     });
